@@ -45,10 +45,10 @@ The boilerplate uses [rollup.js](https://rollupjs.org) with the [terser](https:/
 
 ```json
 {
-	"devDependencies": {
-		"rollup": "^2.6.1",
-		"rollup-plugin-terser": "^5.3.0"
-	}
+    "devDependencies": {
+        "rollup": "^2.6.1",
+        "rollup-plugin-terser": "^5.3.0"
+    }
 }
 ```
 
@@ -57,13 +57,13 @@ In the `rollup.config.js` file, there's a `configs` object that you can use to c
 ```js
 // Configs
 var configs = {
-	name: 'MyProject',                // Global namespace to use for IIFEs [optional]
-	files: ['main.js', 'detects.js'], // The files to process
-	formats: ['iife', 'es'],          // The formats to output - will be added as a suffix to the filename (ex. main.es.js)
-	default: 'iife',                  // Files with this format will not have a format suffix [optional]
-	pathIn: 'src/js',                 // The source directory for your JS files
-	pathOut: 'dist/js',               // The directory to compile JS files into
-	minify: true                      // If true, a minified version will also be created with the .min suffix
+    name: 'MyProject',                // Global namespace to use for IIFEs [optional]
+    files: ['main.js', 'detects.js'], // The files to process
+    formats: ['iife', 'es'],          // The formats to output - will be added as a suffix to the filename (ex. main.es.js)
+    default: 'iife',                  // Files with this format will not have a format suffix [optional]
+    pathIn: 'src/js',                 // The source directory for your JS files
+    pathOut: 'dist/js',               // The directory to compile JS files into
+    minify: true                      // If true, a minified version will also be created with the .min suffix
 };
 ```
 
@@ -100,9 +100,9 @@ The boilerplate uses [node-sass](https://github.com/sass/node-sass), the Node im
 
 ```json
 {
-	"devDependencies": {
-		"node-sass": "^4.14.0"
-	}
+    "devDependencies": {
+        "node-sass": "^4.14.0"
+    }
 }
 ```
 
@@ -111,14 +111,14 @@ In the `sass.js` file, there's a `configs` object that you can use to control wh
 ```js
 // Configs
 var configs = {
-	name: 'MyProject',    // The name to use in the file banner
-	files: ['main.scss'], // The files to process
-	pathIn: 'src/scss',   // The source directory for your Sass files
-	pathOut: 'dist/css',  // The directory to compile CSS files into
-	sourceMap: false,     // If true, will generate a sourcemap
-	indentType: 'tab',    // The type of indenting to use ['tab'|'spaces']
-	indentWidth: 1,       // How many tabs or spaces to indent
-	minify: true          // If true, a minified version will also be created with the .min suffix
+    name: 'MyProject',    // The name to use in the file banner
+    files: ['main.scss'], // The files to process
+    pathIn: 'src/scss',   // The source directory for your Sass files
+    pathOut: 'dist/css',  // The directory to compile CSS files into
+    sourceMap: false,     // If true, will generate a sourcemap
+    indentType: 'tab',    // The type of indenting to use ['tab'|'spaces']
+    indentWidth: 1,       // How many tabs or spaces to indent
+    minify: true          // If true, a minified version will also be created with the .min suffix
 };
 ```
 
@@ -144,9 +144,9 @@ The boilerplate uses [svgo](https://github.com/svg/svgo) to remove the cruft tha
 
 ```json
 {
-	"devDependencies": {
-		"svgo": "^1.3.2",
-	}
+    "devDependencies": {
+        "svgo": "^1.3.2",
+    }
 }
 ```
 
@@ -173,9 +173,9 @@ The boilerplate uses [ImageOptim-CLI](https://github.com/JamieMason/ImageOptim-C
 
 ```json
 {
-	"devDependencies": {
-		"imageoptim-cli": "^3.0.2"
-	}
+    "devDependencies": {
+        "imageoptim-cli": "^3.0.2"
+    }
 }
 ```
 
