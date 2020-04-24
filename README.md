@@ -5,11 +5,10 @@ A simple boilerplate for using NPM tasks to build and compile JavaScript, CSS, a
 
 - [Install Node.js.](http://nodejs.org/)
 - [Download the NPM Build Tool Boilerplate.](https://github.com/cferdinandi/build-tool-boilerplate/archive/master.zip)
-- If you're on macOS and are going to use image optimization, [install ImageOptim](https://imageoptim.com/mac).
 
 **Quick Start**
 
-Each task has just one or two dependencies, so I recommend deleting the ones you don't need before running `npm install`. Learn more in [the documentation](#documentation) below.
+Each task has just one or two dependencies (*except for image optimization*), so I recommend deleting the ones you don't need before running `npm install`. Learn more in [the documentation](#documentation) below.
 
 1. In bash/terminal/command line, `cd` into your project directory.
 2. Run `npm install`.
@@ -34,25 +33,17 @@ The boilerplate uses the `npm run` command to run tasks.
 npm run js    # compile and minify
 npm run css   # compile and minify Sass into CSS
 npm run svg   # optimize SVGs with SVGO
-
-# macOS
 npm run img   # optimize image files
+
+# macOS/Linux
 npm run copy  # copy files from the src/copy directory as-is into /dist
 npm run clean # delete the /dist directory
 npm run build # run all tasks
 
 # Windows
-npm run imgwin   # optimize image files
 npm run copywin  # copy files from the src/copy directory as-is into /dist
 npm run cleanwin # delete the /dist directory
 npm run buildwin # run all tasks
-
-# Linux
-# imglinux and buildlinux don't use ImageOptim
-npm run imglinux   # optimize image files
-npm run copy       # copy files from the src/copy directory as-is into /dist
-npm run clean      # delete the /dist directory
-npm run buildlinux # run all tasks
 ```
 
 
@@ -184,14 +175,18 @@ npm run svg
 
 ### Image Optimization
 
-The boilerplate uses [ImageOptim-CLI](https://github.com/JamieMason/ImageOptim-CLI) to run the [ImageOptim app](https://imageoptim.com/mac) from the command line.
+The boilerplate uses [imagemin](https://www.npmjs.com/package/imagemin), with the [MozJPEG](https://github.com/imagemin/imagemin-mozjpeg), [pngcrush](https://github.com/imagemin/imagemin-pngcrush), [pngquant](https://github.com/imagemin/imagemin-pngquant), and [zopfli](https://github.com/imagemin/imagemin-zopfli) plugins.
 
-**The app must be installed for this to work.** Unfortunately, it's Mac-only.
+(*Yea, that's kind of lot, isn't it?*)
 
 ```json
 {
     "devDependencies": {
-        "imageoptim-cli": "^3.0.2"
+        "imagemin-cli": "^5.1.0",
+        "imagemin-mozjpeg": "^8.0.0",
+        "imagemin-pngcrush": "^6.0.0",
+        "imagemin-pngquant": "^8.0.0",
+        "imagemin-zopfli": "^6.0.0",
     }
 }
 ```
@@ -199,14 +194,7 @@ The boilerplate uses [ImageOptim-CLI](https://github.com/JamieMason/ImageOptim-C
 Image files should be in the `src/img` directory. Use this task to run the build.
 
 ```bash
-# macOS
 npm run img
-
-# Windows
-npm run imgwin
-
-# Linux
-npm run imglinux
 ```
 
 ### Copy Files
@@ -254,14 +242,11 @@ npm run clean && npm run js && npm run css && npm run svg && npm run img && npm 
 Use this task to run the build.
 
 ```bash
-# macOS
+# macOS/Linux
 npm run build
 
 # Windows
 npm run buildwin
-
-# Linux
-npm run buildlinux
 ```
 
 
