@@ -5,7 +5,7 @@ A simple boilerplate for using NPM tasks to build and compile JavaScript, CSS, a
 
 - [Install Node.js.](http://nodejs.org/)
 - [Download the NPM Build Tool Boilerplate.](https://github.com/cferdinandi/build-tool-boilerplate/archive/master.zip)
-- If you're on macOS and going to use image optimization, [install ImageOptim](https://imageoptim.com/mac).
+- If you're on macOS and are going to use image optimization, [install ImageOptim](https://imageoptim.com/mac).
 
 **Quick Start**
 
@@ -36,19 +36,20 @@ npm run css   # compile and minify Sass into CSS
 npm run svg   # optimize SVGs with SVGO
 
 # macOS
-npm run img   # optimize image files with ImageOptim
+npm run img   # optimize image files
 npm run copy  # copy files from the src/copy directory as-is into /dist
 npm run clean # delete the /dist directory
 npm run build # run all tasks
 
 # Windows
-npm run imgwin   # optimize image files with ImageOptim
+npm run imgwin   # optimize image files
 npm run copywin  # copy files from the src/copy directory as-is into /dist
 npm run cleanwin # delete the /dist directory
 npm run buildwin # run all tasks
 
 # Linux
-npm run imglinux   # optimize image files with ImageOptim
+# imglinux and buildlinux don't use ImageOptim
+npm run imglinux   # optimize image files
 npm run copy       # copy files from the src/copy directory as-is into /dist
 npm run clean      # delete the /dist directory
 npm run buildlinux # run all tasks
