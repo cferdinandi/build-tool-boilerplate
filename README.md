@@ -5,8 +5,11 @@ A simple boilerplate for using NPM tasks to build and compile JavaScript, CSS, a
 
 - [Install Node.js.](http://nodejs.org/)
 - [Download the NPM Build Tool Boilerplate.](https://github.com/cferdinandi/build-tool-boilerplate/archive/master.zip)
+- If you're going to use image optimization, [install ImageOptim](https://imageoptim.com/mac) (*macOS only, unfortuantely*).
 
 **Quick Start**
+
+Each task has just one or two dependencies, so I recommend deleting the ones you don't need before running `npm install`. Learn more in [the documentation](#documentation) below.
 
 1. In bash/terminal/command line, `cd` into your project directory.
 2. Run `npm install`.
@@ -18,8 +21,6 @@ A simple boilerplate for using NPM tasks to build and compile JavaScript, CSS, a
 ## Documentation
 
 This is a boilerplate that you can use as a starting point for your projects.
-
-Each task has just one or two dependencies, so I recommend deleting the ones you don't need before running `npm install`.
 
 [Running Tasks](#running-tasks) · [JavaScript](#javascript) · [Sass => CSS](#sass--css) · [SVG Optimization](#svg-optimization) · [Image Optimization](#image-optimization) · [Copy Files](#copy-files) · [Clean](#clean) · [Complete Build](#complete-build)
 
