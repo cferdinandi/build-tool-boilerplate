@@ -5,7 +5,7 @@ A simple boilerplate for using NPM tasks to build and compile JavaScript, CSS, a
 
 - [Install Node.js.](http://nodejs.org/)
 - [Download the NPM Build Tool Boilerplate.](https://github.com/cferdinandi/build-tool-boilerplate/archive/master.zip)
-- If you're going to use image optimization, [install ImageOptim](https://imageoptim.com/mac) (*macOS only, unfortuantely*).
+- If you're on macOS and going to use image optimization, [install ImageOptim](https://imageoptim.com/mac).
 
 **Quick Start**
 
@@ -30,13 +30,28 @@ This is a boilerplate that you can use as a starting point for your projects.
 The boilerplate uses the `npm run` command to run tasks.
 
 ```bash
+# Cross-Platform
 npm run js    # compile and minify
 npm run css   # compile and minify Sass into CSS
 npm run svg   # optimize SVGs with SVGO
+
+# macOS
 npm run img   # optimize image files with ImageOptim
 npm run copy  # copy files from the src/copy directory as-is into /dist
 npm run clean # delete the /dist directory
 npm run build # run all tasks
+
+# Windows
+npm run imgwin   # optimize image files with ImageOptim
+npm run copywin  # copy files from the src/copy directory as-is into /dist
+npm run cleanwin # delete the /dist directory
+npm run buildwin # run all tasks
+
+# Linux
+npm run imglinux   # optimize image files with ImageOptim
+npm run copy       # copy files from the src/copy directory as-is into /dist
+npm run clean      # delete the /dist directory
+npm run buildlinux # run all tasks
 ```
 
 
@@ -183,7 +198,14 @@ The boilerplate uses [ImageOptim-CLI](https://github.com/JamieMason/ImageOptim-C
 Image files should be in the `src/img` directory. Use this task to run the build.
 
 ```bash
+# macOS
 npm run img
+
+# Windows
+npm run imgwin
+
+# Linux
+npm run imglinux
 ```
 
 ### Copy Files
@@ -195,7 +217,11 @@ There's no dependency for this task, but it does use unix/linux conventions that
 Use this task to run the build.
 
 ```bash
+# macOS/Linux
 npm run copy
+
+# Windows
+npm run copywin
 ```
 
 ### Clean
@@ -205,7 +231,11 @@ You can delete the `/dist` directory before running a build to clean up any junk
 There's no dependency for this task, but it does use unix/linux conventions that might not work on pre-bash Windows.
 
 ```bash
+# macOS/Linux
 npm run clean
+
+# Windows
+npm run cleanwin
 ```
 
 
@@ -216,13 +246,21 @@ You can run all of your build tasks in a single command.
 Be sure to delete any tasks you're not using from the `build` tasks under `scripts` in your `package.json` file first. The `&&` joins tasks, just like in JavaScript.
 
 ```bash
+# Example (not cross-platform)
 npm run clean && npm run js && npm run css && npm run svg && npm run img && npm run copy
 ```
 
 Use this task to run the build.
 
 ```bash
+# macOS
 npm run build
+
+# Windows
+npm run buildwin
+
+# Linux
+npm run buildlinux
 ```
 
 

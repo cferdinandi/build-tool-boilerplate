@@ -13,12 +13,18 @@
     },
     "scripts": {
         "clean": "rm -rf dist",
+        "cleanwin": "cmd /c rmdir /s /q dist",
         "js": "rollup --config",
         "css": "node sass.js",
         "svg": "svgo -f src/svg dist/svg --disable=removeViewBox,removeTitle",
         "img": "mkdir -p dist/img && cp -r src/img/. dist/img && imageoptim dist/img",
+        "imgwin": "cmd \/c mkdir dist\\img && cmd \/c xcopy src\\img\\. dist\\img \/s \/e \/y && imageoptim --no-imageoptim dist\/img",
+        "imglinux": "mkdir -p dist/img && cp -r src/img/. dist/img && imageoptim --no-imageoptim dist/img",
         "copy": "cp -r src/copy/. dist",
-        "build": "npm run clean && npm run js && npm run css && npm run svg && npm run img && npm run copy"
+        "copywin": "cmd \/c xcopy src\\copy\\. dist \/s \/e \/y",
+        "build": "npm run clean && npm run js && npm run css && npm run svg && npm run img && npm run copy",
+        "buildwin": "cmd /c npm run cleanwin && npm run js && npm run css && npm run svg && npm run imgwin && npm run copywin",
+        "buildlinux": "npm run clean && npm run js && npm run css && npm run svg && npm run imglinux && npm run copy"
     },
     "devDependencies": {
         "rollup": "^2.6.1",
