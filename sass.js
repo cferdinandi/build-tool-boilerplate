@@ -1,4 +1,4 @@
-var sass = require('node-sass');
+var sass = require('sass');
 var fs = require('fs');
 var pkg = require('./package.json');
 
