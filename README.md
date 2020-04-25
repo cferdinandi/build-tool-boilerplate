@@ -16,7 +16,6 @@ Each task has just one or two dependencies (*except for image optimization*), so
 
 
 
-
 ## Documentation
 
 This is a boilerplate that you can use as a starting point for your projects.
@@ -104,17 +103,17 @@ npm run js
 
 ### Sass => CSS
 
-The boilerplate uses [node-sass](https://github.com/sass/node-sass), the Node implementation of [LibSass](https://sass-lang.com/libsass), to parse `.scss` files into CSS.
+The boilerplate uses the Node implementation of [dart-sass](https://sass-lang.com/dart-sass) to parse `.scss` files into CSS.
 
 ```json
 {
     "devDependencies": {
-        "node-sass": "^4.14.0"
+        "sass": "^1.26.5"
     }
 }
 ```
 
-In the `sass.js` file, there's a `configs` object that you can use to control what node-sass does.
+In the `sass.js` file, there's a `configs` object that you can use to control what `dart-sass` does.
 
 ```js
 // Configs
@@ -259,3 +258,5 @@ For years, I've been an avid [Gulp](https://gulpjs.com/) user. Gulp is great. Bu
 I'm tired of having to repair my build anytime I don't use it for a few months. I'm tired of installing 270mb of `node_modules` dependencies to build a simple website or web app.
 
 **With NPM, you can build a simplish build tool that does just what you want (*and nothing more*) with a fraction of the footprint.** Major kudos to Keith Cirkel for [teaching me about this years ago](https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/), before I was ready to hear it.
+
+❤️ *Huge thanks to [Charles Roper](https://twitter.com/charlesroper) for creating Windows versions of some of the OS-specific terminal prompts.*

@@ -13,11 +13,11 @@
     },
     "scripts": {
         "clean": "rm -rf dist",
-        "cleanwin": "cmd /c rmdir /s /q dist",
+        "cleanwin": "cmd /c if exist dist rmdir /s /q dist",
         "js": "rollup --config",
         "css": "node sass.js",
         "svg": "svgo -f src/svg dist/svg --disable=removeViewBox,removeTitle",
-        "img": "imagemin src/img/* --out-dir=dist/img --plugin=mozjpeg --plugin=pngcrush --plugin=pngquant --plugin=zopfli",
+        "img": "imagemin src/img/* --out-dir=dist/img --plugin=pngquant --plugin=mozjpeg --plugin=pngcrush --plugin=zopfli",
         "copy": "cp -r src/copy/. dist",
         "copywin": "cmd /c xcopy src\\copy\\. dist /s /e /y",
         "build": "npm run clean && npm run js && npm run css && npm run svg && npm run img && npm run copy",
