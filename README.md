@@ -257,6 +257,6 @@ For years, I've been an avid [Gulp](https://gulpjs.com/) user. Gulp is great. Bu
 
 I'm tired of having to repair my build anytime I don't use it for a few months. I'm tired of installing 270mb of `node_modules` dependencies to build a simple website or web app.
 
-**With NPM, you can build a simplish build tool that does just what you want (*and nothing more*) with a fraction of the footprint.** Major kudos to Keith Cirkel for [teaching me about this years ago](https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/), before I was ready to hear it.
+With NPM, you can build a simplish build tool that does just what you want (*and nothing more*) with a fraction of the footprint.
 
-❤️ *Huge thanks to [Charles Roper](https://twitter.com/charlesroper) for creating Windows versions of some of the OS-specific terminal prompts.*
+❤️ *Major kudos to Keith Cirkel for [teaching me about this years ago](https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/), before I was ready to hear it. Huge thanks to [Charles Roper](https://twitter.com/charlesroper) for creating Windows versions of some of the OS-specific terminal prompts.*
