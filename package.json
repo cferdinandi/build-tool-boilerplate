@@ -1,6 +1,6 @@
 {
-    "name": "build-tools-cookbook",
-    "version": "1.0.0",
+    "name": "build-tools-boilerplate",
+    "version": "2.0.0",
     "description": "Simple recipes for building and compiling with the CLI.",
     "author": {
         "name": "Your Name",
@@ -9,16 +9,15 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "http://github.com/cferdinandi/build-tools-cookbook"
+        "url": "http://github.com/cferdinandi/build-tools-boilerplate"
     },
     "scripts": {
-        "clean": "rimraf dist",
+        "clean": "recursive-delete 'dist'",
         "js": "rollup --config",
         "css": "node sass.js",
         "svg": "svgo -f src/svg dist/svg --disable=removeViewBox,removeTitle",
         "img": "imagemin src/img/* --out-dir=dist/img --plugin=pngquant --plugin=mozjpeg --plugin=pngcrush --plugin=zopfli",
-        "copy": "cp -r src/copy/. dist",
-        "copywin": "cmd /c xcopy src\\copy\\. dist /s /e /y",
+        "copy": "recursive-copy 'src/copy' 'dist'",
         "build-dirty": "npm-run-all -p js css svg img copy",
         "build": "npm-run-all -s clean build-dirty",
         "watch-css": "chokidar './src/**/*.scss' -c 'npm run css'",
@@ -26,20 +25,23 @@
         "watch-svg": "chokidar './src/**/*.svg' -c 'npm run svg'",
         "watch-img": "chokidar './src/img/**/*.*' -c 'npm run img'",
         "watch-copy": "chokidar './src/copy/**/*.*' -c 'npm run copy'",
-        "watch": "npm-run-all -p watch-css watch-js watch-svg watch-img watch-copy"
+        "watch": "npm-run-all -p build watch-css watch-js watch-svg watch-img watch-copy",
+        "server-start": "browser-sync start --files 'dist' --server 'dist'",
+        "server": "npm-run-all -p watch server-start"
     },
     "devDependencies": {
-        "chokidar-cli": "^2.1.0",
+        "npm-run-all": "^4.1.5",
+        "recursive-fs": "^2.1.0",
+        "rollup": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "sass": "^1.26.5",
+        "svgo": "^1.3.2",
         "imagemin-cli": "^6.0.0",
         "imagemin-mozjpeg": "^8.0.0",
         "imagemin-pngcrush": "^6.0.0",
         "imagemin-pngquant": "^8.0.0",
         "imagemin-zopfli": "^6.0.0",
-        "npm-run-all": "^4.1.5",
-        "rimraf": "^3.0.2",
-        "rollup": "^2.6.1",
-        "rollup-plugin-terser": "^7.0.2",
-        "sass": "^1.26.5",
-        "svgo": "^1.3.2"
+        "chokidar-cli": "^2.1.0",
+        "browser-sync": "^2.26.14"
     }
 }
