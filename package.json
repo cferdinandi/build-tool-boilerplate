@@ -15,7 +15,7 @@
         "clean": "recursive-delete 'dist'",
         "js": "rollup --config",
         "css": "node sass.js",
-        "svg": "svgo -f src/svg dist/svg --disable=removeViewBox,removeTitle",
+        "svg": "svgo -f src/svg dist/svg -r --disable=removeViewBox,removeTitle",
         "img": "imagemin src/img/* --out-dir=dist/img --plugin=pngquant --plugin=mozjpeg --plugin=pngcrush --plugin=zopfli",
         "copy": "recursive-copy 'src/copy' 'dist'",
         "build-dirty": "npm-run-all -p js css svg img copy",
