@@ -84,6 +84,8 @@ A banner is automatically generated from your `package.json` data.
 
 It includes the project name and version, a copyright notice with the current year and the package author name, the license type, and a link to the project repository.
 
+_If a `configs.name` property is included, that will be used. If not, the banner defaults to the `name` property in your `package.json` file._
+
 ```js
 // Banner
 var banner = `/*! ${configs.name ? configs.name : pkg.name} v${pkg.version} | (c) ${new Date().getFullYear()} ${pkg.author.name} | ${pkg.license} License | ${pkg.repository.url} */`;
@@ -138,6 +140,8 @@ var configs = {
 A banner is automatically generated from your `package.json` data.
 
 It includes the project name and version, a copyright notice with the current year and the package author name, the license type, and a link to the project repository.
+
+_If a `configs.name` property is included, that will be used. If not, the banner defaults to the `name` property in your `package.json` file._
 
 ```js
 // Banner
