@@ -174,7 +174,7 @@ For accessibility reasons, the boilerplate disables the settings that remove the
 You can make additional command line configurations under the `svg` tasks in the `scripts` property of the `package.json` file.
 
 ```bash
-svgo -f src/svg dist/svg --disable=removeViewBox,removeTitle
+svgo -f src/svg dist/svg -r --disable=removeViewBox,removeTitle
 ```
 
 SVGs should be in the `src/svg` directory. Use this task to run the build.
