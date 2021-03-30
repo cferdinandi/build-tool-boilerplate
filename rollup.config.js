@@ -32,7 +32,7 @@ var createOutput = function (filename, minify) {
 			output.plugins = [terser()];
 		}
 
-        output.sourcemap = configs.sourceMap
+		output.sourcemap = configs.sourceMap
 
 		return output;
 	});
