@@ -76,7 +76,8 @@ var configs = {
     default: 'iife',                  // Files with this format will not have a format suffix [optional]
     pathIn: 'src/js',                 // The source directory for your JS files
     pathOut: 'dist/js',               // The directory to compile JS files into
-    minify: true                      // If true, a minified version will also be created with the .min suffix
+    minify: true,                     // If true, a minified version will also be created with the .min suffix
+    sourcemap: false                  // If true, sourcemaps are created for each processed file
 };
 ```
 
@@ -130,10 +131,11 @@ var configs = {
     files: ['main.scss'], // The files to process
     pathIn: 'src/scss',   // The source directory for your Sass files
     pathOut: 'dist/css',  // The directory to compile CSS files into
-    sourceMap: false,     // If true, will generate a sourcemap
     indentType: 'tab',    // The type of indenting to use ['tab'|'spaces']
     indentWidth: 1,       // How many tabs or spaces to indent
-    minify: true          // If true, a minified version will also be created with the .min suffix
+    minify: true,         // If true, a minified version will also be created with the .min suffix
+    sourceMap: false,     // If true, will generate an external sourcemap
+    sourceMapEmbed: false // If true, the sourcemap will be embedded within the generated css file
 };
 ```
 
