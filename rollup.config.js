@@ -12,7 +12,7 @@ var configs = {
 	pathIn: 'src/js',
 	pathOut: 'dist/js',
 	minify: true,
-    sourceMap: false
+	sourceMap: false
 };
 
 // Banner
