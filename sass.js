@@ -12,8 +12,8 @@ var configs = {
 	indentType: 'tab',
 	indentWidth: 1,
 	minify: true,
-    sourceMap: false,
-    sourceMapEmbed: false
+	sourceMap: false,
+	sourceMapEmbed: false
 };
 
 // Banner
@@ -24,7 +24,7 @@ var getOptions = function (file, filename, minify) {
 		file: `${configs.pathIn}/${file}`,
 		outFile: `${configs.pathOut}/${filename}`,
 		sourceMap: configs.sourceMap,
-        sourceMapEmbed: configs.sourceMapEmbed,
+		sourceMapEmbed: configs.sourceMapEmbed,
 		indentType: configs.indentType,
 		indentWidth: configs.indentWidth,
 		outputStyle: minify ? 'compressed' : 'expanded'
@@ -35,57 +35,57 @@ var writeFile = function (pathOut, fileName, fileData) {
     // Create the directory path
     fs.mkdir(pathOut, { recursive: true }, function (err) {
         // If there's an error, throw it
-        if (err) throw err
+        if (err) throw err;
 
         // Write the file to the path
         fs.writeFile(`${pathOut}/${fileName}`, fileData, function (err) {
-            if (err) throw err
+            if (err) throw err;
 
-            var data = fs.readFileSync(`${pathOut}/${fileName}`)
-            var fd = fs.openSync(`${pathOut}/${fileName}`, 'w+')
-            var insert = new Buffer.from(banner + '\n')
-            fs.writeSync(fd, insert, 0, insert.length, 0)
-            fs.writeSync(fd, data, 0, data.length, insert.length)
+            var data = fs.readFileSync(`${pathOut}/${fileName}`);
+            var fd = fs.openSync(`${pathOut}/${fileName}`, 'w+');
+            var insert = new Buffer.from(banner + '\n');
+            fs.writeSync(fd, insert, 0, insert.length, 0);
+            fs.writeSync(fd, data, 0, data.length, insert.length);
             fs.close(fd, function (err) {
-                if (err) throw err
-                console.error(`Compiled ${pathOut}/${fileName}`)
+                if (err) throw err;
+                console.error(`Compiled ${pathOut}/${fileName}`);
             })
         })
     })
 }
 
 var parseSass = function (file, minify) {
-	var filename = `${file.slice(0, file.length - 5)}${minify ? '.min' : ''}.css`;
-	sass.render(getOptions(file, filename, minify), function (err, result) {
+    var filename = `${file.slice(0, file.length - 5)}${minify ? '.min' : ''}.css`;
+    sass.render(getOptions(file, filename, minify), function (err, result) {
 
-		// If there's an error, throw it
-		if (err) throw err;
+	// If there's an error, throw it
+	if (err) throw err;
 
         // Write the file
-        writeFile(configs.pathOut, filename, result.css)
+        writeFile(configs.pathOut, filename, result.css);
 
-	});
+    });
 };
 
 var parseSourceMaps = function (file) {
-    var filename = `${file.slice(0, file.length - 5)}.css.map`
+    var filename = `${file.slice(0, file.length - 5)}.css.map`;
     sass.render(getOptions(file, filename), function (err, result) {
 
         // If there's an error, throw it
-        if (err) throw err
+        if (err) throw err;
 
         // Write the file
-        writeFile(configs.pathOut, filename, result.map)
+        writeFile(configs.pathOut, filename, result.map);
 
-    })
+    });
 }
 
 configs.files.forEach(function (file) {
-	parseSass(file);
-	if (configs.minify) {
-		parseSass(file, true);
-	}
+    parseSass(file);
+    if (configs.minify) {
+	parseSass(file, true);
+    }
     if (configs.sourceMap && !configs.sourceMapEmbed) {
-        parseSourceMaps(file)
+        parseSourceMaps(file);
     }
 });
