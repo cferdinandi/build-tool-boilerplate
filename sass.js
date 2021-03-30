@@ -31,7 +31,7 @@ var getOptions = function (file, filename, minify) {
 	};
 };
 
-var writeFile = function (pathOut, fileName, fileData) {
+var writeFile = function (pathOut, fileName, fileData, printBanner = true) {
     // Create the directory path
     fs.mkdir(pathOut, { recursive: true }, function (err) {
         // If there's an error, throw it
@@ -43,12 +43,12 @@ var writeFile = function (pathOut, fileName, fileData) {
 
             var data = fs.readFileSync(`${pathOut}/${fileName}`);
             var fd = fs.openSync(`${pathOut}/${fileName}`, 'w+');
-            var insert = new Buffer.from(banner + '\n');
+            var insert = printBanner ? new Buffer.from(banner + '\n') : '';
             fs.writeSync(fd, insert, 0, insert.length, 0);
             fs.writeSync(fd, data, 0, data.length, insert.length);
             fs.close(fd, function (err) {
                 if (err) throw err;
-                console.error(`Compiled ${pathOut}/${fileName}`);
+                console.log(`Compiled ${pathOut}/${fileName}`);
             })
         })
     })
@@ -64,28 +64,16 @@ var parseSass = function (file, minify) {
         // Write the file
         writeFile(configs.pathOut, filename, result.css);
 
+        if (configs.sourceMap && !configs.sourceMapEmbed) {
+            // Write external sourcemap
+            writeFile(configs.pathOut, filename + '.map', result.map, false);
+        }
     });
 };
-
-var parseSourceMaps = function (file) {
-    var filename = `${file.slice(0, file.length - 5)}.css.map`;
-    sass.render(getOptions(file, filename), function (err, result) {
-
-        // If there's an error, throw it
-        if (err) throw err;
-
-        // Write the file
-        writeFile(configs.pathOut, filename, result.map);
-
-    });
-}
 
 configs.files.forEach(function (file) {
     parseSass(file);
     if (configs.minify) {
-	parseSass(file, true);
-    }
-    if (configs.sourceMap && !configs.sourceMapEmbed) {
-        parseSourceMaps(file);
+	    parseSass(file, true);
     }
 });
