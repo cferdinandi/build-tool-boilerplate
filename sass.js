@@ -12,8 +12,7 @@ var configs = {
 	indentType: 'tab',
 	indentWidth: 1,
 	minify: true,
-	sourceMap: false,
-	sourceMapEmbed: false
+	sourceMap: false
 };
 
 // Banner
@@ -24,7 +23,7 @@ var getOptions = function (file, filename, minify) {
 		file: `${configs.pathIn}/${file}`,
 		outFile: `${configs.pathOut}/${filename}`,
 		sourceMap: configs.sourceMap,
-		sourceMapEmbed: configs.sourceMapEmbed,
+        sourceMapContents: configs.sourceMap,
 		indentType: configs.indentType,
 		indentWidth: configs.indentWidth,
 		outputStyle: minify ? 'compressed' : 'expanded'
