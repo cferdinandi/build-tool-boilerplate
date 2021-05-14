@@ -76,7 +76,8 @@ var configs = {
     default: 'iife',                  // Files with this format will not have a format suffix [optional]
     pathIn: 'src/js',                 // The source directory for your JS files
     pathOut: 'dist/js',               // The directory to compile JS files into
-    minify: true                      // If true, a minified version will also be created with the .min suffix
+    minify: true,                     // If true, a minified version will also be created with the .min suffix
+    sourceMap: false                  // If true, sourcemaps are created for each processed file †
 };
 ```
 
@@ -108,6 +109,7 @@ JavaScript files should be in the `src/js` directory. Use this task to run the b
 npm run js
 ```
 
+† Fire Fox users: ensure that ['Use Source Maps'](https://github.com/cferdinandi/build-tool-boilerplate/issues/7#issuecomment-811432626), and ['Show original sources'](https://github.com/cferdinandi/build-tool-boilerplate/issues/7#issuecomment-811855711) options are enabled in Developer Tools.
 
 ### Sass => CSS
 
@@ -130,10 +132,10 @@ var configs = {
     files: ['main.scss'], // The files to process
     pathIn: 'src/scss',   // The source directory for your Sass files
     pathOut: 'dist/css',  // The directory to compile CSS files into
-    sourceMap: false,     // If true, will generate a sourcemap
     indentType: 'tab',    // The type of indenting to use ['tab'|'spaces']
     indentWidth: 1,       // How many tabs or spaces to indent
-    minify: true          // If true, a minified version will also be created with the .min suffix
+    minify: true,         // If true, a minified version will also be created with the .min suffix
+    sourceMap: false,     // If true, sourcemaps are created for each processed file †
 };
 ```
 
@@ -154,7 +156,7 @@ Sass files should be in the `src/scss` directory. Use this task to run the build
 npm run css
 ```
 
-
+† Fire Fox users: ensure that ['Use Source Maps'](https://github.com/cferdinandi/build-tool-boilerplate/issues/7#issuecomment-811432626), and ['Show original sources'](https://github.com/cferdinandi/build-tool-boilerplate/issues/7#issuecomment-811855711) options are enabled in Developer Tools.
 ### SVG Optimization
 
 The boilerplate uses [svgo](https://github.com/svg/svgo) to remove the cruft that gets added to SVG files by many editors.
@@ -172,7 +174,7 @@ For accessibility reasons, the boilerplate disables the settings that remove the
 You can make additional command line configurations under the `svg` tasks in the `scripts` property of the `package.json` file.
 
 ```bash
-svgo -f src/svg dist/svg --disable=removeViewBox,removeTitle
+svgo -f src/svg dist/svg -r --disable=removeViewBox,removeTitle
 ```
 
 SVGs should be in the `src/svg` directory. Use this task to run the build.

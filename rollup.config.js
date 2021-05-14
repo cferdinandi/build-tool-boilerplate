@@ -11,7 +11,8 @@ var configs = {
 	default: 'iife',
 	pathIn: 'src/js',
 	pathOut: 'dist/js',
-	minify: true
+	minify: true,
+	sourceMap: false
 };
 
 // Banner
@@ -30,6 +31,9 @@ var createOutput = function (filename, minify) {
 		if (minify) {
 			output.plugins = [terser()];
 		}
+
+		output.sourcemap = configs.sourceMap
+
 		return output;
 	});
 };
