@@ -12,16 +12,19 @@ var configs = {
 	indentType: 'tab',
 	indentWidth: 1,
 	minify: true,
-	sourceMap: false
+	sourceMap: false,
+	buildCritical: false,
+	criticalPathIn: 'src/scss-critical',
+	criticalPathOut: 'dist/critical/css'
 };
 
 // Banner
 var banner = `/*! ${configs.name ? configs.name : pkg.name} v${pkg.version} | (c) ${new Date().getFullYear()} ${pkg.author.name} | ${pkg.license} License | ${pkg.repository.url} */`;
 
-var getOptions = function (file, filename, minify) {
+var getOptions = function (file, filename, minify, critical) {
 	return {
-		file: `${configs.pathIn}/${file}`,
-		outFile: `${configs.pathOut}/${filename}`,
+		file: critical ? `${configs.criticalPathIn}/${file}` : `${configs.pathIn}/${file}`,
+		pathOut: critical ? `${configs.criticalPathOut}` : `${configs.pathOut}`,
 		sourceMap: configs.sourceMap,
         	sourceMapContents: configs.sourceMap,
 		indentType: configs.indentType,
@@ -53,22 +56,32 @@ var writeFile = function (pathOut, fileName, fileData, printBanner = true) {
     })
 }
 
-var parseSass = function (file, minify) {
+var parseSass = function (file, minify, critical) {
     var filename = `${file.slice(0, file.length - 5)}${minify ? '.min' : ''}.css`;
-    sass.render(getOptions(file, filename, minify), function (err, result) {
+	var parseOptions = getOptions(file, filename, minify, critical);
+    sass.render(parseOptions, function (err, result) {
 
 	// If there's an error, throw it
 	if (err) throw err;
 
         // Write the file
-        writeFile(configs.pathOut, filename, result.css);
+        writeFile(parseOptions.pathOut, filename, result.css);
 
         if (configs.sourceMap && !configs.sourceMapEmbed) {
             // Write external sourcemap
-            writeFile(configs.pathOut, filename + '.map', result.map, false);
+            writeFile(parseOptions.pathOut, filename + '.map', result.map, false);
         }
     });
 };
+
+if (configs.buildCritical) {
+	configs.files.forEach(function (file) {
+		parseSass(file, null, true);
+		if (configs.minify) {
+			parseSass(file, true, true);
+		}
+	});
+}
 
 configs.files.forEach(function (file) {
     parseSass(file);
