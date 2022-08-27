@@ -1,5 +1,5 @@
 {
-    "name": "build-tools-boilerplate",
+    "name": "build-tool-boilerplate",
     "version": "2.0.0",
     "description": "Simple recipes for building and compiling with the CLI.",
     "author": {
@@ -9,7 +9,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "http://github.com/cferdinandi/build-tools-boilerplate"
+        "url": "http://github.com/cferdinandi/build-tool-boilerplate"
     },
     "scripts": {
         "clean": "recursive-delete 'dist'",
