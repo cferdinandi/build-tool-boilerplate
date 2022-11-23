@@ -42,6 +42,6 @@
         "imagemin-pngquant": "^8.0.0",
         "imagemin-zopfli": "^6.0.0",
         "chokidar-cli": "^2.1.0",
-        "browser-sync": "^2.26.14"
+        "browser-sync": "^2.27.10"
     }
 }
