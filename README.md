@@ -60,7 +60,7 @@ The boilerplate uses [rollup.js](https://rollupjs.org) with the [terser](https:/
 {
     "devDependencies": {
         "rollup": "^2.6.1",
-        "rollup-plugin-terser": "^7.0.2"
+        "@rollup/plugin-terser": "^0.2.0"
     }
 }
 ```
