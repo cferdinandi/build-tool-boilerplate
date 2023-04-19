@@ -10,26 +10,12 @@ var configs = {
 	files: ['main2.less'],
 	pathIn: 'src/less',
 	pathOut: 'dist/css',
-	indentType: 'tab',
-	indentWidth: 1,
 	minify: true,
 	sourceMap: false
 };
 
 // Banner
 var banner = `/*! ${configs.name ? configs.name : pkg.name} v${pkg.version} | (c) ${new Date().getFullYear()} ${pkg.author.name} | ${pkg.license} License | ${pkg.repository.url} */`;
-
-var getOptions = function (file, filename, minify) {
-	return {
-		file: `${configs.pathIn}/${file}`,
-		outFile: `${configs.pathOut}/${filename}`,
-		sourceMap: configs.sourceMap,
-    	sourceMapContents: configs.sourceMap,
-		indentType: configs.indentType,
-		indentWidth: configs.indentWidth,
-		outputStyle: minify ? 'compressed' : 'expanded'
-	};
-};
 
 var writeFile = function (pathOut, fileName, fileData, printBanner = true) {
     // Create the directory path

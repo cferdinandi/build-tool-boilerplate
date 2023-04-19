@@ -143,11 +143,9 @@ In the `less.js` file, there's a `configs` object that you can use to control wh
 // Configs
 var configs = {
     name: 'MyProject',    // The name to use in the file banner
-    files: ['main.scss'], // The files to process
-    pathIn: 'src/scss',   // The source directory for your Sass files
+    files: ['main2.less'], // The files to process
+    pathIn: 'src/less',   // The source directory for your Sass files
     pathOut: 'dist/css',  // The directory to compile CSS files into
-    indentType: 'tab',    // The type of indenting to use ['tab'|'spaces']
-    indentWidth: 1,       // How many tabs or spaces to indent
     minify: true,         // If true, a minified version will also be created with the .min suffix
     sourceMap: false,     // If true, sourcemaps are created for each processed file †
 };
@@ -164,10 +162,10 @@ _If a `configs.name` property is included, that will be used. If not, the banner
 var banner = `/*! ${configs.name ? configs.name : pkg.name} v${pkg.version} | (c) ${new Date().getFullYear()} ${pkg.author.name} | ${pkg.license} License | ${pkg.repository.url} */`;
 ```
 
-Sass files should be in the `src/scss` directory. Use this task to run the build.
+Less files should be in the `src/less` directory. Use this task to run the build.
 
 ```bash
-npm run sass
+npm run less
 ```
 
 _**Note for Firefox users:** ensure that ['Use Source Maps'](https://github.com/cferdinandi/build-tool-boilerplate/issues/7#issuecomment-811432626), and ['Show original sources'](https://github.com/cferdinandi/build-tool-boilerplate/issues/7#issuecomment-811855711) options are enabled in Developer Tools._
