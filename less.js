@@ -8,8 +8,8 @@ var pkg = require('./package.json');
 var configs = {
 	name: 'BuildToolsCookbook',
 	files: ['main2.less'],
-	pathIn: 'src/less/',
-	pathOut: 'dist/css/',
+	pathIn: 'src/less',
+	pathOut: 'dist/css',
 	indentType: 'tab',
 	indentWidth: 1,
 	minify: true,
@@ -56,8 +56,8 @@ var writeFile = function (pathOut, fileName, fileData, printBanner = true) {
 
 var parseLess = function (file, minify) {
     var filename = `${file.slice(0, file.length - 5)}${minify ? '.min' : ''}.css`;
-    less.render(fs.readFileSync(configs.pathIn + file).toString(), {
-        filename: path.resolve(configs.pathIn + file),
+    less.render(fs.readFileSync(`${configs.pathIn}/${file}`).toString(), {
+        filename: path.resolve(`${configs.pathIn}/${file}`),
         compress: minify,
         sourceMap: configs.sourceMap,
     }, function(e, output) {
