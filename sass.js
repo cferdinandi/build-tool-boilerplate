@@ -23,7 +23,7 @@ var getOptions = function (file, filename, minify) {
 		file: `${configs.pathIn}/${file}`,
 		outFile: `${configs.pathOut}/${filename}`,
 		sourceMap: configs.sourceMap,
-        	sourceMapContents: configs.sourceMap,
+    	sourceMapContents: configs.sourceMap,
 		indentType: configs.indentType,
 		indentWidth: configs.indentWidth,
 		outputStyle: minify ? 'compressed' : 'expanded'
