@@ -125,6 +125,20 @@ The boilerplate uses the Node implementation of [dart-sass](https://sass-lang.co
 
 In the `sass.js` file, there's a `configs` object that you can use to control what `dart-sass` does.
 
+### Less => CSS
+
+The boilerplate uses [less](https://lesscss.org) to parse `.less` files into CSS.
+
+```json
+{
+    "devDependencies": {
+        "less": "^4.1.3"
+    }
+}
+```
+
+In the `less.js` file, there's a `configs` object that you can use to control what `less` does.
+
 ```js
 // Configs
 var configs = {
