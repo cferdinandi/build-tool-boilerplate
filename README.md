@@ -32,7 +32,7 @@ The boilerplate uses the `npm run` command to run tasks. These work on macOS, Li
 ```bash
 # Main Tasks
 npm run js     # compile and minify
-npm run css    # compile and minify Sass into CSS
+npm run sass   # compile and minify Sass into CSS
 npm run svg    # optimize SVGs with SVGO
 npm run img    # optimize image files
 npm run copy   # copy files from the src/copy directory as-is into /dist
@@ -43,7 +43,7 @@ npm run server # run a localhost server that reloads when files change
 
 # Modular Tasks
 npm run watch-js     # watch for changes to the /js directory
-npm run watch-css    # watch for changes to the /css directory
+npm run watch-sass   # watch for changes to the /sass directory
 npm run watch-svg    # watch for changes to the /svg directory
 npm run watch-img    # watch for changes to the /img directory
 npm run watch-copy   # watch for changes to the /copy directory
@@ -125,15 +125,27 @@ The boilerplate uses the Node implementation of [dart-sass](https://sass-lang.co
 
 In the `sass.js` file, there's a `configs` object that you can use to control what `dart-sass` does.
 
+### Less => CSS
+
+The boilerplate uses [less](https://lesscss.org) to parse `.less` files into CSS.
+
+```json
+{
+    "devDependencies": {
+        "less": "^4.1.3"
+    }
+}
+```
+
+In the `less.js` file, there's a `configs` object that you can use to control what `less` does.
+
 ```js
 // Configs
 var configs = {
     name: 'MyProject',    // The name to use in the file banner
-    files: ['main.scss'], // The files to process
-    pathIn: 'src/scss',   // The source directory for your Sass files
+    files: ['main2.less'], // The files to process
+    pathIn: 'src/less',   // The source directory for your Sass files
     pathOut: 'dist/css',  // The directory to compile CSS files into
-    indentType: 'tab',    // The type of indenting to use ['tab'|'spaces']
-    indentWidth: 1,       // How many tabs or spaces to indent
     minify: true,         // If true, a minified version will also be created with the .min suffix
     sourceMap: false,     // If true, sourcemaps are created for each processed file †
 };
@@ -150,13 +162,13 @@ _If a `configs.name` property is included, that will be used. If not, the banner
 var banner = `/*! ${configs.name ? configs.name : pkg.name} v${pkg.version} | (c) ${new Date().getFullYear()} ${pkg.author.name} | ${pkg.license} License | ${pkg.repository.url} */`;
 ```
 
-Sass files should be in the `src/scss` directory. Use this task to run the build.
+Less files should be in the `src/less` directory. Use this task to run the build.
 
 ```bash
-npm run css
+npm run less
 ```
 
-_**Note for FireFox users:** ensure that ['Use Source Maps'](https://github.com/cferdinandi/build-tool-boilerplate/issues/7#issuecomment-811432626), and ['Show original sources'](https://github.com/cferdinandi/build-tool-boilerplate/issues/7#issuecomment-811855711) options are enabled in Developer Tools._
+_**Note for Firefox users:** ensure that ['Use Source Maps'](https://github.com/cferdinandi/build-tool-boilerplate/issues/7#issuecomment-811432626), and ['Show original sources'](https://github.com/cferdinandi/build-tool-boilerplate/issues/7#issuecomment-811855711) options are enabled in Developer Tools._
 
 ### SVG Optimization
 
@@ -268,7 +280,7 @@ Regardless of which task you use, be sure to delete any tasks you're not using f
 
 ```bash
 # default build-dirty task
-npm-run-all -p js css svg img copy
+npm-run-all -p js sass svg img copy
 ```
 
 
@@ -294,7 +306,7 @@ If you only want to watch for changes to a specific directory in `/src`, you can
 
 ```bash
 npm run watch-js   # watch for changes to the /js directory
-npm run watch-css  # watch for changes to the /css directory
+npm run watch-sass # watch for changes to the /css directory
 npm run watch-svg  # watch for changes to the /svg directory
 npm run watch-img  # watch for changes to the /img directory
 npm run watch-copy # watch for changes to the /copy directory
